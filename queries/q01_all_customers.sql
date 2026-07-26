@@ -50,3 +50,39 @@ FROM customers;
 
 -- 15. How many distinct customers placed orders?
 SELECT COUNT(DISTINCT customer_id) AS active_customers FROM orders;
+
+-- 16. Total spent per customer
+SELECT customer_id, SUM(amount) AS total_spent
+FROM orders
+GROUP BY customer_id
+ORDER BY total_spent DESC;
+
+-- 17. Number of orders per customer
+SELECT customer_id, COUNT(*) AS num_orders
+FROM orders
+GROUP BY customer_id
+ORDER BY num_orders DESC;
+
+-- 18. Customers from each country
+SELECT country, COUNT(*) AS num_customers
+FROM customers
+GROUP BY country
+ORDER BY num_customers DESC;
+
+-- 19. Customers who spent more than $200 in total
+SELECT customer_id, SUM(amount) AS total_spent
+FROM orders
+GROUP BY customer_id
+HAVING SUM(amount) > 200
+ORDER BY total_spent DESC;
+
+-- 20. Per-customer order stats: count, total, average, biggest single order
+SELECT
+    customer_id,
+    COUNT(*)      AS num_orders,
+    SUM(amount)   AS total_spent,
+    AVG(amount)   AS avg_order_value,
+    MAX(amount)   AS biggest_order
+FROM orders
+GROUP BY customer_id
+ORDER BY total_spent DESC;
