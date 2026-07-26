@@ -27,3 +27,26 @@ SELECT DISTINCT country FROM customers;
 
 -- 10. Orders sorted by date, then amount descending
 SELECT order_id, order_date, amount FROM orders ORDER BY order_date, amount DESC;
+
+-- 11. Total number of orders
+SELECT COUNT(*) AS num_orders FROM orders;
+
+-- 12. Total revenue across all orders
+SELECT SUM(amount) AS total_revenue FROM orders;
+
+-- 13. Largest, smallest, and average order value
+SELECT
+    MAX(amount) AS biggest,
+    MIN(amount) AS smallest,
+    AVG(amount) AS average
+FROM orders;
+
+-- 14. How many customers have a NULL email?
+SELECT
+    COUNT(*)       AS total_customers,
+    COUNT(email)   AS with_email,
+    COUNT(*) - COUNT(email) AS missing_email
+FROM customers;
+
+-- 15. How many distinct customers placed orders?
+SELECT COUNT(DISTINCT customer_id) AS active_customers FROM orders;
