@@ -39,3 +39,7 @@ INSERT INTO order_items VALUES
     (1011, 103, 1),
     (1011, 104, 1),
     (1012, 106, 1);
+
+-- verify
+SELECT COUNT(*) AS products_count    FROM products;    -- 7
+SELECT COUNT(*) AS line_items_count  FROM order_items; -- 17
