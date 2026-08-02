@@ -13,3 +13,9 @@ INSERT INTO products VALUES
     (105, 'Bluetooth Speaker',   'Electronics', 50.00),
     (106, 'Cookbook',            'Books',       25.00),
     (107, 'Desk Lamp',           'Home',        45.00);  -- never ordered
+
+CREATE TABLE order_items (
+    order_id   INTEGER,
+    product_id INTEGER,
+    quantity   INTEGER
+);
